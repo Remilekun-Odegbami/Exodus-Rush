@@ -11,7 +11,7 @@ public class SegmentGenerator : MonoBehaviour
     [SerializeField] int segmentNum;
     void Update()
     {
-        if (creatingSegment == false)
+        if (!creatingSegment)
         {
             creatingSegment = true;
             StartCoroutine(SegmentGen());

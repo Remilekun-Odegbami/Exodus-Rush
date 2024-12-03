@@ -24,7 +24,7 @@ public class SegmentGenerator : MonoBehaviour
         Instantiate(Segments[segmentNum], new Vector3(0, 0, zPos), Quaternion.identity);
         zPos += 130;
         // turn on the segments after x seconds
-        yield return new WaitForSeconds(20);
+        yield return new WaitForSeconds(10);
         creatingSegment = false;
 
     }

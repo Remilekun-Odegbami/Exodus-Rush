@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectCoin : MonoBehaviour
+public class CollectGems : MonoBehaviour
 {
-    [SerializeField] AudioSource coinFX;
+    [SerializeField] AudioSource gemFX;
 
     private void OnTriggerEnter(Collider other)
     {
-        coinFX.Play();
-        CoinCounter.coinCount++;
+        gemFX.Play();
+        CoinCounter.gemCount++;
         this.gameObject.SetActive(false);
     }
 }

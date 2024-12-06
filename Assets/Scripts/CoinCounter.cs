@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CoinCounter : MonoBehaviour
 {
@@ -11,8 +12,8 @@ public class CoinCounter : MonoBehaviour
 
     private void Update()
     {
-        coinDisplay.GetComponent<TMPro.TMP_Text>().text = "COINS: " + coinCount;
-        gemDisplay.GetComponent<TMPro.TMP_Text>().text = "GEMS: " + gemCount;
+        coinDisplay.GetComponent<TMPro.TMP_Text>().text = "" + coinCount;
+        gemDisplay.GetComponent<TMPro.TMP_Text>().text = "" + gemCount;
     }
 
 }

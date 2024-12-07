@@ -13,5 +13,6 @@ public class CollisionDetect : MonoBehaviour
 
         thePlayer.GetComponent<Player>().enabled = false;
         playerAnimation.GetComponent<Animator>().Play("Stumble Backwards");
+        
     }
 }

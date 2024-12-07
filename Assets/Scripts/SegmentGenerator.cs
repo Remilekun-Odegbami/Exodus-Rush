@@ -6,7 +6,7 @@ public class SegmentGenerator : MonoBehaviour
 {
     public GameObject[] Segments;
 
-    [SerializeField] int zPos = 130;
+    [SerializeField] int zPos = 150;
     [SerializeField] bool creatingSegment = false;
     [SerializeField] int segmentNum;
     void Update()
@@ -22,7 +22,7 @@ public class SegmentGenerator : MonoBehaviour
     {
         segmentNum = Random.Range(0, Segments.Length);
         Instantiate(Segments[segmentNum], new Vector3(0, 0, zPos), Quaternion.identity);
-        zPos += 130;
+        zPos += 150;
         // turn on the segments after x seconds
         yield return new WaitForSeconds(10);
         creatingSegment = false;

@@ -9,33 +9,34 @@ public class Player : MonoBehaviour
     public float right_limit = 5.5f;
     public float left_limit = -5.5f;
     static public bool canMove = false;
+    public static GameObject thePlayer;
 
+    private void Awake()
+    {
+        thePlayer = this.gameObject;
+    }
     // Update is called once per frame
     void Update()
     {
-
         // to push the player forward relative to the world around it and the game speed
         transform.Translate(Vector3.forward * Time.deltaTime * playerSpeed, Space.World);
         if (canMove == true)
-        {        
-
-        // A check to see if we are pressing the correct key
-        if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        {
+            // A check to see if we are pressing the correct key
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             // to make the player not roll out of the floor limit
             if(this.gameObject.transform.position.x > left_limit) { 
             transform.Translate(Vector3.left * Time.deltaTime * horizontalSpeed);
             }
         }
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-        {
-            if(this.gameObject.transform.position.x < right_limit)
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {
-                transform.Translate(Vector3.left * Time.deltaTime * horizontalSpeed * -1);
+                if(this.gameObject.transform.position.x < right_limit)
+                {
+                    transform.Translate(Vector3.left * Time.deltaTime * horizontalSpeed * -1);
+                }
             }
         }
-        }
-
-        Debug.Log("Running");
     }
 }

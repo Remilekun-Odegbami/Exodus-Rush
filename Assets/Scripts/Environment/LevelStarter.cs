@@ -16,21 +16,24 @@ public class LevelStarter : MonoBehaviour
 
     void Start()
     {
-      //  StartCoroutine(countSequence());
-        StartCoroutine(countSequenceWithTimeFreeze());
+        StartCoroutine(countSequence());
+      //  StartCoroutine(countSequenceWithTimeFreeze());
 
     }
 
     IEnumerator countSequence()
     {
+       // Debug.Log(DistanceCovered.disDisplay);
+        Player.thePlayer.GetComponent<Player>().enabled = false;
         Player.canMove = false;
-        yield return new WaitForSeconds(.9f);
+      //  DistanceCovered.addingDistance = false;
+        yield return new WaitForSeconds(.5f);
         timerFX.Play();
         // wait for the one screen to disappear
-        yield return new WaitForSeconds(1.4f);
+        yield return new WaitForSeconds(1f);
         countDownFX.Play();
         countDown3.SetActive(true);
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(1f);
         countDown2.SetActive(true);
         yield return new WaitForSeconds(1f);
         countDown1.SetActive(true);
@@ -38,6 +41,9 @@ public class LevelStarter : MonoBehaviour
         countDownRun.SetActive(true);
         runFX.Play();
         Player.canMove = true;
+        Player.thePlayer.GetComponent<Player>().enabled = true;
+      //  Debug.Log(DistanceCovered.addingDistance);
+      //  DistanceCovered.addingDistance = true;
     }
 
     IEnumerator countSequenceWithTimeFreeze()

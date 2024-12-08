@@ -16,6 +16,7 @@ public class SegmentGenerator : MonoBehaviour
             creatingSegment = true;
             StartCoroutine(SegmentGen());
         }
+       
     }
 
     IEnumerator SegmentGen()
@@ -26,6 +27,5 @@ public class SegmentGenerator : MonoBehaviour
         // turn on the segments after x seconds
         yield return new WaitForSeconds(10);
         creatingSegment = false;
-
     }
 }

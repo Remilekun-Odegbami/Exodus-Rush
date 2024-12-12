@@ -23,7 +23,7 @@ public class EndRunSequence : MonoBehaviour
         liveDistance.SetActive(false);
         gameOverScreen.SetActive(true);
         yield return new WaitForSeconds(3f);
-      //  fadeOut.SetActive(true);
+        fadeOut.SetActive(true);
         gameOverScreen.SetActive(false);
     }
 }

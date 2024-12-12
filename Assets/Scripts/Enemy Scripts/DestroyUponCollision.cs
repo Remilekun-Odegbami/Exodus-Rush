@@ -11,7 +11,6 @@ public class DestroyUponCollision : MonoBehaviour
         {
             enemyFX.Play();
         int enemy = CollectableCounter.enemyCount++;
-            Debug.Log("enemy is " + enemy);
             Destroy(this.gameObject);
         }
     }

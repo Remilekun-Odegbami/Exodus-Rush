@@ -17,13 +17,13 @@ public class EndRunSequence : MonoBehaviour
 
   public IEnumerator EndSequence()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1.5f);
         liveCoins.SetActive(false);
         liveEnemies.SetActive(false);
         liveDistance.SetActive(false);
-        gameOverScreen.SetActive(false);
-        yield return new WaitForSeconds(3);
-        fadeOut.SetActive(true);
         gameOverScreen.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        fadeOut.SetActive(true);
+        gameOverScreen.SetActive(false);
     }
 }

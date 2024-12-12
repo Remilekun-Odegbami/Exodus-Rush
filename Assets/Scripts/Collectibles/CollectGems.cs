@@ -9,7 +9,7 @@ public class CollectGems : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         gemFX.Play();
-        CoinCounter.gemCount++;
+        CollectableCounter.gemCount++;
         this.gameObject.SetActive(false);
     }
 }

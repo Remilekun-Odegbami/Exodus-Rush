@@ -13,6 +13,7 @@ public class LevelStarter : MonoBehaviour
     [SerializeField] AudioSource countDownFX;
     [SerializeField] AudioSource timerFX;
     [SerializeField] AudioSource runFX;
+    [SerializeField] GameObject levelControl;
 
     void Start()
     {
@@ -23,8 +24,10 @@ public class LevelStarter : MonoBehaviour
 
     IEnumerator countSequence()
     {
-       // Debug.Log(DistanceCovered.disDisplay);
+        // stop moving the player before the timer counts
         Player.thePlayer.GetComponent<Player>().enabled = false;
+        // stop counting the distance before the timer counts
+        levelControl.GetComponent<DistanceCovered>().enabled = false;
         Player.canMove = false;
       //  DistanceCovered.addingDistance = false;
         yield return new WaitForSeconds(.5f);
@@ -42,8 +45,9 @@ public class LevelStarter : MonoBehaviour
         runFX.Play();
         Player.canMove = true;
         Player.thePlayer.GetComponent<Player>().enabled = true;
-      //  Debug.Log(DistanceCovered.addingDistance);
-      //  DistanceCovered.addingDistance = true;
+        levelControl.GetComponent<DistanceCovered>().enabled = true;
+        //  Debug.Log(DistanceCovered.addingDistance);
+        //  DistanceCovered.addingDistance = true;
     }
 
     IEnumerator countSequenceWithTimeFreeze()

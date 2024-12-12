@@ -5,6 +5,7 @@ using UnityEngine;
 public class DistanceCovered : MonoBehaviour
 {
     public GameObject distanceDisplay;
+    public GameObject distanceEndDisplay;
     public int distanceRan;
     public static bool addingDistance = false;
     public static float disDisplay = 0.35f;
@@ -22,6 +23,7 @@ public class DistanceCovered : MonoBehaviour
     {
         distanceRan++;
         distanceDisplay.GetComponent<TMPro.TMP_Text>().text = "" + distanceRan + " m";
+        distanceEndDisplay.GetComponent<TMPro.TMP_Text>().text = "" + distanceRan + " m";
         yield return new WaitForSeconds(disDisplay); 
         addingDistance = false;
     }

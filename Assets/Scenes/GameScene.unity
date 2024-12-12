@@ -661,8 +661,9 @@ GameObject:
   - component: {fileID: 73670464}
   - component: {fileID: 73670465}
   - component: {fileID: 73670466}
+  - component: {fileID: 73670467}
   m_Layer: 0
-  m_Name: LevelControls
+  m_Name: LevelControl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -721,6 +722,8 @@ MonoBehaviour:
   enemyDisplay: {fileID: 979568336}
   coinDisplay: {fileID: 752597825}
   gemDisplay: {fileID: 1968269026}
+  coinEndDisplay: {fileID: 223382141}
+  enemyEndDisplay: {fileID: 120569022}
 --- !u!114 &73670465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -734,6 +737,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceDisplay: {fileID: 1956076163}
+  distanceEndDisplay: {fileID: 2035652763}
   distanceRan: 0
 --- !u!114 &73670466
 MonoBehaviour:
@@ -756,6 +760,24 @@ MonoBehaviour:
   countDownFX: {fileID: 130888286}
   timerFX: {fileID: 759565935}
   runFX: {fileID: 1349482364}
+  levelControl: {fileID: 73670461}
+--- !u!114 &73670467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73670461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2806f116d433d564b98683cad357d97b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  liveCoins: {fileID: 1754370020}
+  liveEnemies: {fileID: 1877382994}
+  liveDistance: {fileID: 440681072}
+  gameOverScreen: {fileID: 1995191824}
+  fadeOut: {fileID: 257331610}
 --- !u!1 &86801686
 GameObject:
   m_ObjectHideFlags: 0
@@ -789,7 +811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d92b3bb0acbdc24794975b7f6f47195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MsgPopFX: {fileID: 0}
+  MsgPopFX: {fileID: 1312007183}
 --- !u!212 &86801688
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -854,7 +876,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ac70ffd4f5190c4d8aa1dbeb11d4365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyFX: {fileID: 0}
+  enemyFX: {fileID: 877932843}
 --- !u!65 &86801690
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1246,7 +1268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d92b3bb0acbdc24794975b7f6f47195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MsgPopFX: {fileID: 0}
+  MsgPopFX: {fileID: 1312007183}
 --- !u!212 &111430946
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1311,7 +1333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ac70ffd4f5190c4d8aa1dbeb11d4365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyFX: {fileID: 0}
+  enemyFX: {fileID: 877932843}
 --- !u!65 &111430948
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1716,7 +1738,7 @@ GameObject:
   - component: {fileID: 120569025}
   - component: {fileID: 120569024}
   m_Layer: 5
-  m_Name: Enemy Counter
+  m_Name: Enemy End Counter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2656,7 +2678,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ac70ffd4f5190c4d8aa1dbeb11d4365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyFX: {fileID: 0}
+  enemyFX: {fileID: 877932843}
 --- !u!65 &206280627
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2705,7 +2727,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d92b3bb0acbdc24794975b7f6f47195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MsgPopFX: {fileID: 0}
+  MsgPopFX: {fileID: 1312007183}
 --- !u!212 &206280632
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3114,7 +3136,7 @@ GameObject:
   - component: {fileID: 223382144}
   - component: {fileID: 223382143}
   m_Layer: 5
-  m_Name: Coin Counter
+  m_Name: Coin End Counter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3431,7 +3453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ac70ffd4f5190c4d8aa1dbeb11d4365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyFX: {fileID: 0}
+  enemyFX: {fileID: 877932843}
 --- !u!65 &244942033
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3740,6 +3762,95 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 256578129}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &257331610
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 257331611}
+  - component: {fileID: 257331613}
+  - component: {fileID: 257331612}
+  - component: {fileID: 257331614}
+  m_Layer: 5
+  m_Name: Game Over Fade Out
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &257331611
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257331610}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1976663104}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &257331612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257331610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.02641511, g: 0.025866872, b: 0.025866872, a: 0.8235294}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 0}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &257331613
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257331610}
+  m_CullTransparentMesh: 1
+--- !u!111 &257331614
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257331610}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: 6907abbd432ec8349ad889be7d298720, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &258926579
 GameObject:
   m_ObjectHideFlags: 0
@@ -5174,7 +5285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d92b3bb0acbdc24794975b7f6f47195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MsgPopFX: {fileID: 0}
+  MsgPopFX: {fileID: 1312007183}
 --- !u!212 &351562012
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5239,7 +5350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ac70ffd4f5190c4d8aa1dbeb11d4365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyFX: {fileID: 0}
+  enemyFX: {fileID: 877932843}
 --- !u!65 &351562014
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6933,6 +7044,7 @@ MonoBehaviour:
   thePlayer: {fileID: 1482409243}
   playerAnimation: {fileID: 859598117}
   mainCamera: {fileID: 963194225}
+  levelControl: {fileID: 73670461}
 --- !u!4 &489245033 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3412210510952081712, guid: 6fbd4a11baa732548b05685c605bacc4, type: 3}
@@ -8184,7 +8296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d92b3bb0acbdc24794975b7f6f47195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MsgPopFX: {fileID: 0}
+  MsgPopFX: {fileID: 1312007183}
 --- !u!212 &551968479
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8249,7 +8361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ac70ffd4f5190c4d8aa1dbeb11d4365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyFX: {fileID: 0}
+  enemyFX: {fileID: 877932843}
 --- !u!65 &551968481
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11952,6 +12064,7 @@ MonoBehaviour:
   thePlayer: {fileID: 1482409243}
   playerAnimation: {fileID: 859598117}
   mainCamera: {fileID: 963194225}
+  levelControl: {fileID: 73670461}
 --- !u!1 &821355795
 GameObject:
   m_ObjectHideFlags: 0
@@ -12120,7 +12233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d92b3bb0acbdc24794975b7f6f47195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MsgPopFX: {fileID: 0}
+  MsgPopFX: {fileID: 1312007183}
 --- !u!212 &825183912
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12185,7 +12298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ac70ffd4f5190c4d8aa1dbeb11d4365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyFX: {fileID: 0}
+  enemyFX: {fileID: 877932843}
 --- !u!65 &825183914
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15207,6 +15320,7 @@ MonoBehaviour:
   thePlayer: {fileID: 1482409243}
   playerAnimation: {fileID: 859598117}
   mainCamera: {fileID: 963194225}
+  levelControl: {fileID: 73670461}
 --- !u!136 &1024908919
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -16406,6 +16520,7 @@ MonoBehaviour:
   thePlayer: {fileID: 1482409243}
   playerAnimation: {fileID: 859598117}
   mainCamera: {fileID: 963194225}
+  levelControl: {fileID: 73670461}
 --- !u!1001 &1091073919
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16855,6 +16970,7 @@ MonoBehaviour:
   thePlayer: {fileID: 1482409243}
   playerAnimation: {fileID: 859598117}
   mainCamera: {fileID: 963194225}
+  levelControl: {fileID: 73670461}
 --- !u!1 &1149927199 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 832783ac41f2d70468c4995bebfabfb7, type: 3}
@@ -16876,6 +16992,7 @@ MonoBehaviour:
   thePlayer: {fileID: 1482409243}
   playerAnimation: {fileID: 859598117}
   mainCamera: {fileID: 963194225}
+  levelControl: {fileID: 73670461}
 --- !u!136 &1149927204
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -18034,7 +18151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ac70ffd4f5190c4d8aa1dbeb11d4365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyFX: {fileID: 0}
+  enemyFX: {fileID: 877932843}
 --- !u!65 &1214539621
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18417,6 +18534,7 @@ MonoBehaviour:
   thePlayer: {fileID: 1482409243}
   playerAnimation: {fileID: 859598117}
   mainCamera: {fileID: 963194225}
+  levelControl: {fileID: 73670461}
 --- !u!1 &1274822297
 GameObject:
   m_ObjectHideFlags: 0
@@ -18754,6 +18872,7 @@ MonoBehaviour:
   thePlayer: {fileID: 1482409243}
   playerAnimation: {fileID: 859598117}
   mainCamera: {fileID: 963194225}
+  levelControl: {fileID: 73670461}
 --- !u!1001 &1296990747
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20250,6 +20369,7 @@ MonoBehaviour:
   thePlayer: {fileID: 1482409243}
   playerAnimation: {fileID: 859598117}
   mainCamera: {fileID: 963194225}
+  levelControl: {fileID: 73670461}
 --- !u!1 &1373388079 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 832783ac41f2d70468c4995bebfabfb7, type: 3}
@@ -20533,6 +20653,7 @@ MonoBehaviour:
   thePlayer: {fileID: 1482409243}
   playerAnimation: {fileID: 859598117}
   mainCamera: {fileID: 963194225}
+  levelControl: {fileID: 73670461}
 --- !u!1001 &1405074846
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21826,6 +21947,7 @@ MonoBehaviour:
   thePlayer: {fileID: 1482409243}
   playerAnimation: {fileID: 859598117}
   mainCamera: {fileID: 963194225}
+  levelControl: {fileID: 73670461}
 --- !u!1 &1482409243
 GameObject:
   m_ObjectHideFlags: 0
@@ -22723,6 +22845,7 @@ MonoBehaviour:
   thePlayer: {fileID: 1482409243}
   playerAnimation: {fileID: 859598117}
   mainCamera: {fileID: 963194225}
+  levelControl: {fileID: 73670461}
 --- !u!1 &1518679690
 GameObject:
   m_ObjectHideFlags: 0
@@ -24409,6 +24532,7 @@ MonoBehaviour:
   thePlayer: {fileID: 1482409243}
   playerAnimation: {fileID: 859598117}
   mainCamera: {fileID: 963194225}
+  levelControl: {fileID: 73670461}
 --- !u!136 &1688245603
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -24644,6 +24768,7 @@ MonoBehaviour:
   thePlayer: {fileID: 1482409243}
   playerAnimation: {fileID: 859598117}
   mainCamera: {fileID: 963194225}
+  levelControl: {fileID: 73670461}
 --- !u!1 &1737097661
 GameObject:
   m_ObjectHideFlags: 0
@@ -24959,7 +25084,7 @@ GameObject:
   - component: {fileID: 1742079036}
   - component: {fileID: 1742079035}
   m_Layer: 5
-  m_Name: Game Over Text
+  m_Name: Game Over Heading
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25671,6 +25796,7 @@ MonoBehaviour:
   thePlayer: {fileID: 1482409243}
   playerAnimation: {fileID: 859598117}
   mainCamera: {fileID: 963194225}
+  levelControl: {fileID: 73670461}
 --- !u!136 &1795239247
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -25929,6 +26055,7 @@ MonoBehaviour:
   thePlayer: {fileID: 1482409243}
   playerAnimation: {fileID: 859598117}
   mainCamera: {fileID: 963194225}
+  levelControl: {fileID: 73670461}
 --- !u!1001 &1813095369
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26087,6 +26214,7 @@ MonoBehaviour:
   thePlayer: {fileID: 1482409243}
   playerAnimation: {fileID: 859598117}
   mainCamera: {fileID: 963194225}
+  levelControl: {fileID: 73670461}
 --- !u!4 &1833008541 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: c51050087ea26c14e952d5c3001ec5f7, type: 3}
@@ -26108,6 +26236,7 @@ MonoBehaviour:
   thePlayer: {fileID: 1482409243}
   playerAnimation: {fileID: 859598117}
   mainCamera: {fileID: 963194225}
+  levelControl: {fileID: 73670461}
 --- !u!1 &1833655910
 GameObject:
   m_ObjectHideFlags: 0
@@ -28335,6 +28464,7 @@ MonoBehaviour:
   thePlayer: {fileID: 1482409243}
   playerAnimation: {fileID: 859598117}
   mainCamera: {fileID: 963194225}
+  levelControl: {fileID: 73670461}
 --- !u!1 &1968269026
 GameObject:
   m_ObjectHideFlags: 0
@@ -28650,6 +28780,7 @@ RectTransform:
   - {fileID: 440681073}
   - {fileID: 430484689}
   - {fileID: 1358874992}
+  - {fileID: 257331611}
   - {fileID: 1995191825}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -29097,12 +29228,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1995191825}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: Game Over Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1995191825
 RectTransform:
   m_ObjectHideFlags: 0
@@ -29714,7 +29845,7 @@ GameObject:
   - component: {fileID: 2035652766}
   - component: {fileID: 2035652765}
   m_Layer: 5
-  m_Name: Distance Counter
+  m_Name: Distance End Counter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29867,6 +29998,7 @@ MonoBehaviour:
   thePlayer: {fileID: 1482409243}
   playerAnimation: {fileID: 859598117}
   mainCamera: {fileID: 963194225}
+  levelControl: {fileID: 73670461}
 --- !u!1 &2052637340 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: f32b000e4ef3aa247b8ff4d19a88aca7, type: 3}
@@ -29888,6 +30020,7 @@ MonoBehaviour:
   thePlayer: {fileID: 1482409243}
   playerAnimation: {fileID: 859598117}
   mainCamera: {fileID: 963194225}
+  levelControl: {fileID: 73670461}
 --- !u!1001 &2059892856
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30400,6 +30533,7 @@ MonoBehaviour:
   thePlayer: {fileID: 1482409243}
   playerAnimation: {fileID: 859598117}
   mainCamera: {fileID: 963194225}
+  levelControl: {fileID: 73670461}
 --- !u!1 &2089616872
 GameObject:
   m_ObjectHideFlags: 0
@@ -30556,6 +30690,7 @@ MonoBehaviour:
   thePlayer: {fileID: 1482409243}
   playerAnimation: {fileID: 859598117}
   mainCamera: {fileID: 963194225}
+  levelControl: {fileID: 73670461}
 --- !u!1 &2090830100
 GameObject:
   m_ObjectHideFlags: 0
@@ -31042,7 +31177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ac70ffd4f5190c4d8aa1dbeb11d4365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyFX: {fileID: 0}
+  enemyFX: {fileID: 877932843}
 --- !u!65 &2112304801
 BoxCollider:
   m_ObjectHideFlags: 0

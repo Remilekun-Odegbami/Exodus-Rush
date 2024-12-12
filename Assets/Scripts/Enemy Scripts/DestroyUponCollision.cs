@@ -10,7 +10,7 @@ public class DestroyUponCollision : MonoBehaviour
         if (this.CompareTag("Enemy"))
         {
             enemyFX.Play();
-        int enemy =   CoinCounter.enemyCount++;
+        int enemy = CollectableCounter.enemyCount++;
             Debug.Log("enemy is " + enemy);
             Destroy(this.gameObject);
         }

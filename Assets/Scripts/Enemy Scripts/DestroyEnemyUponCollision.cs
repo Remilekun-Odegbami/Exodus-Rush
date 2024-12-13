@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyUponCollision : MonoBehaviour
+public class DestroyEnemyUponCollision : MonoBehaviour
 {
     [SerializeField] AudioSource enemyFX;
   //  [SerializeField] GameObject playerAnimation;

@@ -8,7 +8,13 @@ public class Player : MonoBehaviour
     public float horizontalSpeed = 3;
     public float right_limit = 5.5f;
     public float left_limit = -5.5f;
+    public float jumpHeight = 3;
+
     static public bool canMove = false;
+    public bool isJumping = false;
+    public bool comingDown = false;
+
+    public GameObject playerObject;
     public static GameObject thePlayer;
 
     private void Awake()
@@ -37,6 +43,38 @@ public class Player : MonoBehaviour
                     transform.Translate(Vector3.left * Time.deltaTime * horizontalSpeed * -1);
                 }
             }
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space))
+            {
+                if(isJumping == false)
+                {
+                    isJumping = true;
+                    playerObject.GetComponent<Animator>().Play("Jump");
+                    StartCoroutine(JumpSequence());
+                }
+            }
         }
+        if(isJumping == true)
+        {
+            if(comingDown == false)
+            {
+                // transform the position of the player
+                transform.Translate(Vector3.up * Time.deltaTime * jumpHeight, Space.World);
+            }
+            else if (comingDown == true)
+            {
+                // transform the position of the player
+                transform.Translate(Vector3.up * Time.deltaTime * - jumpHeight, Space.World);
+            }
+        }
+    }
+
+    IEnumerator JumpSequence()
+    {
+        yield return new WaitForSeconds(.45f);
+        comingDown = true;        
+        yield return new WaitForSeconds(.45f);
+        isJumping = false;
+        comingDown = false;
+        playerObject.GetComponent<Animator>().Play("Running");
     }
 }

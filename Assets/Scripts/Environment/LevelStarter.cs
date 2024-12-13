@@ -14,6 +14,7 @@ public class LevelStarter : MonoBehaviour
     [SerializeField] AudioSource timerFX;
     [SerializeField] AudioSource runFX;
     [SerializeField] GameObject levelControl;
+    [SerializeField] GameObject playerAnimation;
 
     void Start()
     {
@@ -26,6 +27,7 @@ public class LevelStarter : MonoBehaviour
     {
         // stop moving the player before the timer counts
         Player.thePlayer.GetComponent<Player>().enabled = false;
+        playerAnimation.GetComponent<Animator>().Play("Dwarf Idle");
         // stop counting the distance before the timer counts
         levelControl.GetComponent<DistanceCovered>().enabled = false;
         Player.canMove = false;
@@ -46,6 +48,7 @@ public class LevelStarter : MonoBehaviour
         Player.canMove = true;
         Player.thePlayer.GetComponent<Player>().enabled = true;
         levelControl.GetComponent<DistanceCovered>().enabled = true;
+        playerAnimation.GetComponent<Animator>().Play("Running");
         //  Debug.Log(DistanceCovered.addingDistance);
         //  DistanceCovered.addingDistance = true;
     }

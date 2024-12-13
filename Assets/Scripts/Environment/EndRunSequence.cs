@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EndRunSequence : MonoBehaviour
 {
@@ -25,5 +26,7 @@ public class EndRunSequence : MonoBehaviour
         yield return new WaitForSeconds(3f);
         fadeOut.SetActive(true);
         gameOverScreen.SetActive(false);
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(0);
     }
 }

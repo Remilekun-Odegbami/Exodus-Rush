@@ -5,13 +5,16 @@ using UnityEngine;
 public class DestroyUponCollision : MonoBehaviour
 {
     [SerializeField] AudioSource enemyFX;
+  //  [SerializeField] GameObject playerAnimation;
     private void OnTriggerEnter(Collider other)
     {
         if (this.CompareTag("Enemy"))
         {
+
+           // playerAnimation.GetComponent<Animator>().Play("Take 001");
             enemyFX.Play();
         int enemy = CollectableCounter.enemyCount++;
-            Destroy(this.gameObject);
+          //  Destroy(this.gameObject);
         }
     }
 }

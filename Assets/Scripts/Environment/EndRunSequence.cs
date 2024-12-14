@@ -23,7 +23,7 @@ public class EndRunSequence : MonoBehaviour
         liveEnemies.SetActive(false);
         liveDistance.SetActive(false);
         gameOverScreen.SetActive(true);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         fadeOut.SetActive(true);
         gameOverScreen.SetActive(false);
         yield return new WaitForSeconds(1f);

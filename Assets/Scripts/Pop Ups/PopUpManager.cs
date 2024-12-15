@@ -50,6 +50,6 @@ public class PopUpManager : MonoBehaviour
 
     public void MovePopUp(GameObject createdPopUpObject)
     {
-        createdPopUpObject.GetComponent<RectTransform>().DOAnchorPosX(-100, 3f).OnComplete(() => Destroy(createdPopUpObject));
+        createdPopUpObject.GetComponent<RectTransform>().DOAnchorPosX(-10, 3f).OnComplete(() => Destroy(createdPopUpObject));
     }
 }

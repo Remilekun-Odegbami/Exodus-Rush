@@ -5,17 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuFunction : MonoBehaviour
 {
-    public Animator transition;
-
-    public float transitionTime = 1f;
+    [SerializeField] private GameObject mainMenu;
+    [SerializeField] private GameObject aboutMenu;
+    [SerializeField] private GameObject creditMenu;
 
     void Update()
     {
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    // turn on the game over fade screen animation and show result screen
-        //  ///  LoadNextLevel();
-        //}
+       
 
     }
 
@@ -24,16 +20,33 @@ public class MainMenuFunction : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    public void LoadNextLevel()
+    public void OpenAboutPage()
     {
-       // StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+        mainMenu.SetActive(false);
+        creditMenu.SetActive(false);
+        aboutMenu.SetActive(true);
     }
-
-    //IEnumerator LoadLevel(int levlIndex)
-    //{
-    //    transition.SetTrigger("Start");
-    //    yield return new WaitForSeconds(transitionTime);
-    //    SceneManager.LoadScene(levlIndex);
-    //    Debug.Log(levlIndex);
-    //}
+    public void CloseAboutPage()
+    {
+        aboutMenu.SetActive(false);
+        creditMenu.SetActive(false);
+        mainMenu.SetActive(true);
+    }
+    public void OpenCreditPage()
+    {
+        mainMenu.SetActive(false);
+        aboutMenu.SetActive(false);
+        creditMenu.SetActive(true);
+    }
+    public void CloseCreditPage()
+    {
+        aboutMenu.SetActive(false);
+        creditMenu.SetActive(false);
+        mainMenu.SetActive(true);
+    }
+    public void Quit()
+    {
+        Application.Quit();
+        Debug.Log("Game is quitting");
+    }
 }

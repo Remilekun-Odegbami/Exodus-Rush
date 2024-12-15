@@ -17,7 +17,7 @@ public class AboutContent : MonoBehaviour
             scrollRect.verticalNormalizedPosition = 1f;
         }
     }
-    public string GetAboutCOntent()
+    public string GetAboutContent()
     {
         return aboutGameContent;
     }

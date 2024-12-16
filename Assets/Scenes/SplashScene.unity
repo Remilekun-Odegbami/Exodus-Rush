@@ -139,6 +139,10 @@ PrefabInstance:
       propertyPath: loadFX
       value: 
       objectReference: {fileID: 1061947705}
+    - target: {fileID: 7114693098552237629, guid: 460f6932dc1cab74aa1ef7818cf2b57d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8366503116427539780, guid: 460f6932dc1cab74aa1ef7818cf2b57d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

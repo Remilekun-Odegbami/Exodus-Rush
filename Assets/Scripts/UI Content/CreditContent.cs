@@ -16,13 +16,13 @@ public class CreditContent : MonoBehaviour
 
     public Credits[] credits = new Credits[]
     {
-     new Credits("\n\n\n\n\n\n\n\n\nGame Developer & Designer", "Oluwaremilekun Odegbami"),
+     new Credits("\n\n\n\n\n\n\n\n\n\n\n\nGame Developer & Designer", "Oluwaremilekun Odegbami"),
         new Credits("Sound (vfx, sfx)", "Mixkit"),
         new Credits("Characters and Animations", "Mixamo"),
         new Credits("UI", "Violet Theme UI"),
         new Credits("Environment", "Potion Junkies\nDynamic Art\nUnity Asset Store"),
         new Credits("Font", "Google Fonts"),
-        new Credits("Special Thanks", "TCN Creatives Community Group\nJoy Ajayi\nHabib Oladapo\nJimmy Vegas")
+        new Credits("Special Thanks", "TCN Creatives Community Group\nJoy Ajayi\nHabib Oladapo\nOlorunjoba Akinfemi\nJimmy Vegas")
 
     };
 
@@ -42,8 +42,8 @@ public class CreditContent : MonoBehaviour
 
         if (scrollRect != null)
         {
+            Canvas.ForceUpdateCanvases();
             scrollRect.verticalNormalizedPosition = 1;
         }
     }
-
 }

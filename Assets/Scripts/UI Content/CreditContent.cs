@@ -16,7 +16,7 @@ public class CreditContent : MonoBehaviour
 
     public Credits[] credits = new Credits[]
     {
-     new Credits("\n\n\n\n\n\n\n\n\n\n\n\nGame Developer & Designer", "Oluwaremilekun Odegbami"),
+     new Credits("\n\n\n\n\n\n\n\n\n\nGame Developer & Designer", "Oluwaremilekun Odegbami"),
         new Credits("Sound (vfx, sfx)", "Mixkit"),
         new Credits("Characters and Animations", "Mixamo"),
         new Credits("UI", "Violet Theme UI"),

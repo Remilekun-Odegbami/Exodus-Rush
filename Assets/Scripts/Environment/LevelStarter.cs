@@ -8,6 +8,7 @@ public class LevelStarter : MonoBehaviour
     public GameObject countDown2;
     public GameObject countDown1;
     public GameObject countDownRun;
+    public Pause pause;
     public GameObject fadeIn;
     [SerializeField] int counterNum;
     [SerializeField] AudioSource countDownFX;
@@ -30,6 +31,7 @@ public class LevelStarter : MonoBehaviour
         // stop counting the distance before the timer counts
         levelControl.GetComponent<DistanceCovered>().enabled = false;
         Player.canMove = false;
+        pause.pauseButton.SetActive(false);
       //  DistanceCovered.addingDistance = false;
         yield return new WaitForSeconds(.5f);
         timerFX.Play();
@@ -48,6 +50,7 @@ public class LevelStarter : MonoBehaviour
         Player.thePlayer.GetComponent<Player>().enabled = true;
         levelControl.GetComponent<DistanceCovered>().enabled = true;
         playerAnimation.GetComponent<Animator>().Play("Running");
+        pause.pauseButton.SetActive(true);
         //  Debug.Log(DistanceCovered.addingDistance);
         //  DistanceCovered.addingDistance = true;
     }

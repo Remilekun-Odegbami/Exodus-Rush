@@ -9,6 +9,7 @@ public class EndRunSequence : MonoBehaviour
     public GameObject liveEnemies;
     public GameObject liveDistance;
     public GameObject gameOverScreen;
+    public GameObject pauseButton;
     public GameObject fadeOut;
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,7 @@ public class EndRunSequence : MonoBehaviour
         liveCoins.SetActive(false);
         liveEnemies.SetActive(false);
         liveDistance.SetActive(false);
+        pauseButton.SetActive(false);
         gameOverScreen.SetActive(true);
         yield return new WaitForSeconds(5f);
         fadeOut.SetActive(true);

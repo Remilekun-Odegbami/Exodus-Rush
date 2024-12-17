@@ -48,7 +48,7 @@ public class UIManager : MonoBehaviour
 
             foreach (Credits credits in creditContent.credits)
             {
-                combinedCredits += $"<size=50><b>{credits.heading}</b></size>\n<size=40>{credits.content}</size>\n\n"; // Format each credit
+                combinedCredits += $"<size=60><b>{credits.heading}</b></size>\n<size=50>{credits.content}</size>\n\n"; // Format each credit
             }
 
             creditUIText.text = combinedCredits; // Assign the combined string to the TextMeshPro UI text

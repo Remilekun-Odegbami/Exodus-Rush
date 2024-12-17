@@ -23,10 +23,10 @@ public class EndRunSequence : MonoBehaviour
         liveEnemies.SetActive(false);
         liveDistance.SetActive(false);
         gameOverScreen.SetActive(true);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
         fadeOut.SetActive(true);
         gameOverScreen.SetActive(false);
-        yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene(0);
+         yield return new WaitForSeconds(1f);
+         SceneManager.LoadScene(0);
     }
 }

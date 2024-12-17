@@ -8,10 +8,6 @@ public class Credits
 {
     public string heading;
     public string content;
-
-   // public TMP_Text creditHeadingText;
-    // public TMP_Text creditDescriptionText;
-
     public Credits(string heading, string content)
     {
         this.heading = heading;

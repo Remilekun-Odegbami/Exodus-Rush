@@ -14,7 +14,7 @@ public class Loading : MonoBehaviour
     void Start()
     {
         second = 5;
-       Invoke("LoadGame", 5f);
+         Invoke("LoadGame", 5f);
     }
 
     // Update is called once per frame
@@ -31,5 +31,6 @@ public class Loading : MonoBehaviour
     {
         SceneManager.LoadScene(1);
         loadFX.Play();
+        Debug.Log("Load Game");
     }
 }

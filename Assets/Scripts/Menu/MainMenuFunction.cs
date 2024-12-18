@@ -83,6 +83,11 @@ public class MainMenuFunction : MonoBehaviour
         mainMenu.SetActive(true);
     }
 
+    public void AllFunctions()
+    {
+
+    }
+
 
     public void Quit()
     {

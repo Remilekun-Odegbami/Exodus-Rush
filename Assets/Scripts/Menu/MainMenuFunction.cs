@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class MainMenuFunction : MonoBehaviour
 {
     [SerializeField] private GameObject mainMenu;
-    [SerializeField] private GameObject aboutMenu;
+    [SerializeField] public GameObject aboutMenu;
     [SerializeField] private GameObject creditMenu;
     [SerializeField] private GameObject HighScoreMenu;
     [SerializeField] AudioSource MenuPopFX;
@@ -29,27 +29,17 @@ public class MainMenuFunction : MonoBehaviour
     {
         mainMenu.SetActive(false);
         creditMenu.SetActive(false);
+        HighScoreMenu.SetActive(false);
         aboutMenu.SetActive(true);
         MenuPopFX.Play();
-    }
-    public void CloseAboutPage()
-    {
-        aboutMenu.SetActive(false);
-        creditMenu.SetActive(false);
-        mainMenu.SetActive(true);
     }
     public void OpenCreditPage()
     {
         mainMenu.SetActive(false);
         aboutMenu.SetActive(false);
+        HighScoreMenu.SetActive(false);
         creditMenu.SetActive(true);
         MenuPopFX.Play();
-    }
-    public void CloseCreditPage()
-    {
-        aboutMenu.SetActive(false);
-        creditMenu.SetActive(false);
-        mainMenu.SetActive(true);
     }
     public void OpenHighScoreTablePage()
     {
@@ -59,13 +49,17 @@ public class MainMenuFunction : MonoBehaviour
         HighScoreMenu.SetActive(true);
         MenuPopFX.Play();
     }
-    public void CloseHighScoreTablePage()
+
+
+    public void CloseMenuBtn()
     {
         aboutMenu.SetActive(false);
         creditMenu.SetActive(false);
-        HighScoreMenu.SetActive(true);
+        HighScoreMenu.SetActive(false);
         mainMenu.SetActive(true);
     }
+
+
     public void Quit()
     {
         Application.Quit();

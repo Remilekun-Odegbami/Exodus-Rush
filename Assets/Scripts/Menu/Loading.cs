@@ -15,6 +15,7 @@ public class Loading : MonoBehaviour
     {
         second = 5;
          Invoke("LoadGame", 5f);
+        StartCoroutine(LoadingSound());
     }
 
     // Update is called once per frame
@@ -30,7 +31,11 @@ public class Loading : MonoBehaviour
     public void LoadGame()
     {
         SceneManager.LoadScene(1);
+    }
+
+    IEnumerator LoadingSound()
+    {
+        yield return new WaitForSeconds(.8f);
         loadFX.Play();
-        Debug.Log("Load Game");
     }
 }

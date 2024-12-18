@@ -9,6 +9,8 @@ public class MainMenuFunction : MonoBehaviour
     [SerializeField] public GameObject aboutMenu;
     [SerializeField] private GameObject creditMenu;
     [SerializeField] private GameObject HighScoreMenu;
+    [SerializeField] private GameObject contactMenu;
+    [SerializeField] private GameObject settingsMenu;
     [SerializeField] AudioSource MenuPopFX;
 
     public Loading loading;
@@ -49,6 +51,25 @@ public class MainMenuFunction : MonoBehaviour
         HighScoreMenu.SetActive(true);
         MenuPopFX.Play();
     }
+    public void OpenContactPage()
+    {
+        mainMenu.SetActive(false);
+        aboutMenu.SetActive(false);
+        creditMenu.SetActive(false);
+        HighScoreMenu.SetActive(false);
+        contactMenu.SetActive(true);
+        MenuPopFX.Play();
+    }
+    public void OpenSettingsPage()
+    {
+        mainMenu.SetActive(false);
+        aboutMenu.SetActive(false);
+        creditMenu.SetActive(false);
+        HighScoreMenu.SetActive(false);
+        contactMenu.SetActive(false);
+        settingsMenu.SetActive(true);
+        MenuPopFX.Play();
+    }
 
 
     public void CloseMenuBtn()
@@ -56,6 +77,9 @@ public class MainMenuFunction : MonoBehaviour
         aboutMenu.SetActive(false);
         creditMenu.SetActive(false);
         HighScoreMenu.SetActive(false);
+        contactMenu.SetActive(false);
+        mainMenu.SetActive(true);
+        settingsMenu.SetActive(false);
         mainMenu.SetActive(true);
     }
 

@@ -2833,7 +2833,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 317486627614794665, guid: a6be83b5fc3dc2b4ba4733b1aea456e6, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 511804430963695315, guid: a6be83b5fc3dc2b4ba4733b1aea456e6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2857,11 +2857,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1915330710110738195, guid: a6be83b5fc3dc2b4ba4733b1aea456e6, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 0.8151685
       objectReference: {fileID: 0}
     - target: {fileID: 1915330710110738195, guid: a6be83b5fc3dc2b4ba4733b1aea456e6, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.18483149
       objectReference: {fileID: 0}
     - target: {fileID: 6900807268091443436, guid: a6be83b5fc3dc2b4ba4733b1aea456e6, type: 3}
       propertyPath: m_Pivot.x
@@ -2945,7 +2945,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8231431135902272639, guid: a6be83b5fc3dc2b4ba4733b1aea456e6, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 524.6147
       objectReference: {fileID: 0}
     - target: {fileID: 8231431135902272639, guid: a6be83b5fc3dc2b4ba4733b1aea456e6, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -17533,8 +17533,8 @@ Transform:
   m_GameObject: {fileID: 1063036032}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 20, y: 1, z: 50}
+  m_LocalPosition: {x: 0, y: 0, z: -5}
+  m_LocalScale: {x: 20, y: 1, z: 55}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1858468513}
@@ -20628,7 +20628,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ABOUT
+  m_text: HOW TO PLAY
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f801a561a34247942b4aedb356ef1e5b, type: 2}
   m_sharedMaterial: {fileID: -6755367919483270749, guid: f801a561a34247942b4aedb356ef1e5b, type: 2}
@@ -25220,7 +25220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38aa2077786bd9c49a286c668218e192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 8
+  playerSpeed: 15
   horizontalSpeed: 5
   right_limit: 7
   left_limit: -7

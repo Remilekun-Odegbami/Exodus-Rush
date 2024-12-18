@@ -8,6 +8,7 @@ public class EndRunSequence : MonoBehaviour
     public GameObject liveCoins;
     public GameObject liveEnemies;
     public GameObject liveDistance;
+    public GameObject liveHighScore;
     public GameObject gameOverScreen;
     public GameObject pauseButton;
     public GameObject fadeOut;
@@ -17,31 +18,18 @@ public class EndRunSequence : MonoBehaviour
        // StartCoroutine(EndSequence());
     }
 
-  public IEnumerator EndSequence()
+    public IEnumerator EndSequence()
     {
         yield return new WaitForSeconds(2f);
         liveCoins.SetActive(false);
         liveEnemies.SetActive(false);
         liveDistance.SetActive(false);
         pauseButton.SetActive(false);
+        liveHighScore.SetActive(false);
         gameOverScreen.SetActive(true);
         yield return new WaitForSeconds(5f);
         fadeOut.SetActive(true);
         gameOverScreen.SetActive(false);
-         yield return new WaitForSeconds(1f);
-         SceneManager.LoadScene(0);
-    }
-
-    public IEnumerator EndSequence2()
-    {
-        yield return new WaitForSeconds(2f);
-        liveCoins.SetActive(false);
-        liveEnemies.SetActive(false);
-        liveDistance.SetActive(false);
-        pauseButton.SetActive(false);
-        gameOverScreen.SetActive(true);
-        yield return new WaitForSeconds(1f);
-        fadeOut.SetActive(true);
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(0);
     }

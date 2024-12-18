@@ -2,11 +2,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Linq;
 
 public class HighScoreTable : MonoBehaviour
 {
     [SerializeField] private Transform entryContainer;
     [SerializeField] private Transform entryTemplate;
+
 
     private List<HighScoreEntry> highScoreEntryList;
     private List<Transform> highScoreEntryTransformList;
@@ -21,7 +23,7 @@ public class HighScoreTable : MonoBehaviour
 
         entryTemplate.gameObject.SetActive(false);
 
-      //  AddHighScoreEntry(10000, "RMO");
+        //  AddHighScoreEntry(10000, "RMO");
 
         highScoreEntryTransformList = new List<Transform>();
         // Try to load high score data from PlayerPrefs
@@ -36,7 +38,6 @@ public class HighScoreTable : MonoBehaviour
         // If no saved data, initialize with a default list
         if (highScores == null || highScores.highScoreEntryList == null)
         {
-            Debug.LogWarning("No high score data found. Initializing default high score list.");
             highScoreEntryList = new List<HighScoreEntry>
         {
             new HighScoreEntry {  score = 129, name = "Amina" },
@@ -93,6 +94,49 @@ public class HighScoreTable : MonoBehaviour
                 Debug.Log(PlayerPrefs.GetString("highScoreTable"));
         */
     }
+
+    //private void Awake()
+    //{
+    //    string jsonString = PlayerPrefs.GetString("Highscore Table", "");
+    //    Debug.Log("Loaded High Scores: " + jsonString);
+
+    //    HighScores highScores = JsonUtility.FromJson<HighScores>(jsonString);
+
+    //    // If no saved data, initialize with a default list
+    //    if (highScores == null || highScores.highScoreEntryList == null)
+    //    {
+    //        Debug.LogWarning("No high score data found. Initializing default high score list.");
+    //        highScoreEntryList = new List<HighScoreEntry>
+    //        {
+    //            new HighScoreEntry {  score = 129, name = "Amina" },
+    //            new HighScoreEntry { score = 125, name = "Tunde" },
+    //            new HighScoreEntry { score = 128, name = "Kwame" },
+    //            new HighScoreEntry { score = 123, name = "Fatima" },
+    //            new HighScoreEntry { score = 127, name = "Bola"  },
+    //            new HighScoreEntry { score = 122, name = "Zainab" },
+    //            new HighScoreEntry { score = 126, name = "Olu" },
+    //            new HighScoreEntry { score = 121, name = "Chike"},
+    //            new HighScoreEntry { score = 120, name = "Ngozi" },
+    //            new HighScoreEntry { score = 124, name = "Kofi" }
+    //        };
+    //    }
+    //    else
+    //    {
+    //        highScoreEntryList = highScores.highScoreEntryList;
+    //    }
+
+    //    if (highScoreEntryList == null || highScoreEntryList.Count == 0)
+    //    {
+    //        Debug.Log("Initialising default scores.");
+    //        highScoreEntryList = new List<HighScoreEntry>
+    //{
+    //    new HighScoreEntry { score = 129, name = "Amina" },
+    //    // Other default scores...
+    //};
+    //    }
+
+    //}
+
 
     private void CreateHighScoreEntryTransform(HighScoreEntry highScoreEntry, Transform container, List<Transform> transformList)
     {
@@ -169,33 +213,66 @@ public class HighScoreTable : MonoBehaviour
 
     }
 
-    private void AddHighScoreEntry(int score, string name)
+    //public void AddHighScoreEntry(int score, string name)
+    //{
+    //    // Create a new highscore entry object
+    //    HighScoreEntry highScoreEntry = new HighScoreEntry { score = score, name = name };
+
+    //    // Load the saved highscores
+    //    string jsonString = PlayerPrefs.GetString("Highscore Table", "");
+    //    HighScores highScores = JsonUtility.FromJson<HighScores>(jsonString);
+
+    //    // Ensure highScores and the highScoreEntryList are not null
+    //    if (highScores == null || highScores.highScoreEntryList == null)
+    //    {
+    //        highScores = new HighScores { highScoreEntryList = new List<HighScoreEntry>() };
+    //    }
+
+    //    // Add new entry to highscores
+    //    highScores.highScoreEntryList.Add(highScoreEntry);
+
+    //    // Convert the highScores object back to JSON and save it
+    //    string json = JsonUtility.ToJson(highScores);
+    //    PlayerPrefs.SetString("Highscore Table", json);
+    //    PlayerPrefs.Save();
+    //}
+
+    public void AddHighScoreEntry(int score, string name)
     {
-        // Create a new highscore entry object
         HighScoreEntry highScoreEntry = new HighScoreEntry { score = score, name = name };
 
-        // Load the saved highscores
+        // Load existing data
         string jsonString = PlayerPrefs.GetString("Highscore Table", "");
         HighScores highScores = JsonUtility.FromJson<HighScores>(jsonString);
 
-        // Ensure highScores and the highScoreEntryList are not null
         if (highScores == null || highScores.highScoreEntryList == null)
         {
             highScores = new HighScores { highScoreEntryList = new List<HighScoreEntry>() };
         }
 
-        // Add new entry to highscores
+        // Add new entry
         highScores.highScoreEntryList.Add(highScoreEntry);
 
-        // Convert the highScores object back to JSON and save it
+        // Save the updated high score list
         string json = JsonUtility.ToJson(highScores);
         PlayerPrefs.SetString("Highscore Table", json);
         PlayerPrefs.Save();
+        Debug.Log("High Scores Saved: " + json);
+    }
+
+
+    public void RefreshHighScoreTable()
+    {
+        foreach (Transform child in entryContainer)
+        {
+            Destroy(child.gameObject);
+        }
+        Awake(); // Rebuilds the table
     }
 
 
     [System.Serializable]
-    private class HighScores
+    public class HighScores
     {
         public List<HighScoreEntry> highScoreEntryList;
     }

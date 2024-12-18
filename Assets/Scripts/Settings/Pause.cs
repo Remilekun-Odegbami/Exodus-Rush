@@ -69,6 +69,7 @@ public class Pause : MonoBehaviour
         // SceneManager.LoadScene(1);
         yield return new WaitForSecondsRealtime(5f);
         SceneManager.LoadScene(1);
+        Time.timeScale = 1;
     }
 
     public void ExitRace()

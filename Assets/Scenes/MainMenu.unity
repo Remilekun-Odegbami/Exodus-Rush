@@ -3257,8 +3257,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollRect: {fileID: 1308962523}
-  aboutGameContent: "<b>Get ready for the race of your life!</b>\n\nExodus Rush is
-    an action-packed endless runner that takes you through thrilling environments,
+  aboutGameContent: "<b>\n\n\n\n\nGet ready for the race of your life!</b>\n\nExodus
+    Rush is an action-packed endless runner that takes you through thrilling environments,
     daring obstacles, and heart-racing challenges. Dash, dodge, and collect rewards
     as you push your skills to the limit in this fast-paced adventure.\n\n<b>Features
     You\u2019ll Love:</b>\n\nDynamic Levels: Explore unique locations filled with
@@ -4029,7 +4029,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e788e97a1d4dc114fa2510928e3c4aac, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.02
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -4578,7 +4578,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hi
+  m_text: 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5519,7 +5519,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2108309350}
   m_HandleRect: {fileID: 2108309348}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -6911,7 +6911,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hi
+  m_text: Tope
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8091,7 +8091,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hi
+  m_text: 200
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -10181,6 +10181,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: About Page
       objectReference: {fileID: 0}
+    - target: {fileID: 317486627614794665, guid: a6be83b5fc3dc2b4ba4733b1aea456e6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 511804430963695315, guid: a6be83b5fc3dc2b4ba4733b1aea456e6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -10188,6 +10192,14 @@ PrefabInstance:
     - target: {fileID: 893170518290928154, guid: a6be83b5fc3dc2b4ba4733b1aea456e6, type: 3}
       propertyPath: m_text
       value: ABOUT
+      objectReference: {fileID: 0}
+    - target: {fileID: 1915330710110738195, guid: a6be83b5fc3dc2b4ba4733b1aea456e6, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1915330710110738195, guid: a6be83b5fc3dc2b4ba4733b1aea456e6, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6900807268091443436, guid: a6be83b5fc3dc2b4ba4733b1aea456e6, type: 3}
       propertyPath: m_Pivot.x
@@ -10268,6 +10280,18 @@ PrefabInstance:
     - target: {fileID: 6900807268091443436, guid: a6be83b5fc3dc2b4ba4733b1aea456e6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8231431135902272639, guid: a6be83b5fc3dc2b4ba4733b1aea456e6, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898093754772677188, guid: a6be83b5fc3dc2b4ba4733b1aea456e6, type: 3}
+      propertyPath: m_fontSize
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898093754772677188, guid: a6be83b5fc3dc2b4ba4733b1aea456e6, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

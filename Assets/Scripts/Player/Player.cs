@@ -8,14 +8,24 @@ public class Player : MonoBehaviour
     public float right_limit = 5.5f;
     public float left_limit = -5.5f;
     public float jumpHeight = 3;
+    public float groundY = 1f; // Y-coordinate of the ground/road
 
     public static bool canMove = false;
     private bool isJumping = false;
     private bool comingDown = false;
 
-
     public GameObject playerObject;
     public static GameObject thePlayer;
+
+    private Vector2 startTouchPosition, currentTouchPosition;
+    private Touch touch;
+    private bool isSwiping = false;
+    public int pixelDistToDetect = 20;
+    private bool fingerDown;
+
+    public static bool tap, swipeLeft, swipeRight, swipeUp, swipeDown;
+   // private bool isDragging = false;
+    private Vector2 startTouch, swipeDelta;
 
     private void Awake()
     {
@@ -29,13 +39,11 @@ public class Player : MonoBehaviour
 
         if (canMove)
         {
+            HandleMobileMovement();
             HandleMovement();
         }
 
-        if (isJumping)
-        {
-            HandleJump();
-        }
+        HandleJump(); // Always check jump status
     }
 
     private void HandleMovement()
@@ -55,31 +63,163 @@ public class Player : MonoBehaviour
         // Jump
         if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space)) && !isJumping)
         {
-            isJumping = true;
-            playerObject.GetComponent<Animator>()?.Play("Jump");
-            StartCoroutine(JumpSequence());
+            TriggerJump();
         }
+    }
+
+    void HandleMobileMovement()
+    {
+        //check if player is touching the screen, how many touches they have and if the first touch on the screen is the first frame it is down
+        if(Input.touches[0].phase == TouchPhase.Began)
+        {
+            //set start position to where the player puts their finger down
+            tap = true;
+            isSwiping = true;
+            startTouchPosition = Input.touches[0].position;
+        }
+        else if (Input.touches[0].phase == TouchPhase.Ended || Input.touches[0].phase == TouchPhase.Canceled)
+        {
+            isSwiping = false;
+            Reset();
+        }
+
+        // calculate the distance
+        swipeDelta = Vector2.zero;
+        if (isSwiping)
+        {
+            if(Input.touches.Length < 1)
+            {
+                swipeDelta = Input.touches[0].position - startTouch;
+
+            } else if (Input.GetMouseButton(0))
+            {
+                swipeDelta = (Vector2)Input.mousePosition - startTouch;
+            }
+        }
+        if(swipeDelta.magnitude > 125)
+        {
+            float x = swipeDelta.x;
+            float y = swipeDelta.y;
+            if(Mathf.Abs(x) > Mathf.Abs(y))
+            {
+                //left or right
+                if(x < 0)
+                {
+                    swipeLeft = true;
+                } else
+                {
+                    swipeRight = true;
+                }
+            } else
+            {
+                // Up or Down
+                if(y < 0)
+                {
+                    swipeDown = true;
+                } else
+                {
+                    swipeUp = true;
+                }
+            }
+            Reset();
+        }
+    }
+
+    private void Reset()
+    {
+        startTouch = swipeDelta = Vector2.zero;
+        isSwiping=false;
+    }
+
+    //void HandleMobileMovement()
+    //{
+    //    if (Input.touchCount > 0)
+    //    {
+    //        touch = Input.GetTouch(0);
+
+    //        switch (touch.phase)
+    //        {
+    //            case TouchPhase.Began:
+    //                startTouchPosition = touch.position;
+    //                isSwiping = true;
+    //                break;
+
+    //            case TouchPhase.Moved:
+    //                if (isSwiping)
+    //                {
+    //                    currentTouchPosition = touch.position;
+    //                    Vector2 swipeDelta = currentTouchPosition - startTouchPosition;
+
+    //                    // Horizontal swipe detection
+    //                    if (Mathf.Abs(swipeDelta.x) > Mathf.Abs(swipeDelta.y))
+    //                    {
+    //                        if (swipeDelta.x > 0 && transform.position.x < right_limit)
+    //                        {
+    //                            // Swipe Right
+    //                            transform.Translate(Vector3.right * Time.deltaTime * horizontalSpeed);
+    //                        }
+    //                        else if (swipeDelta.x < 0 && transform.position.x > left_limit)
+    //                        {
+    //                            // Swipe Left
+    //                            transform.Translate(Vector3.left * Time.deltaTime * horizontalSpeed);
+    //                        }
+    //                    }
+    //                    // Vertical swipe detection (for jump)
+    //                    else if (swipeDelta.y > 50 && !isJumping) // Swipe up
+    //                    {
+    //                        TriggerJump();
+    //                    }
+
+    //                    isSwiping = false;
+    //                }
+    //                break;
+
+    //            case TouchPhase.Ended:
+    //                isSwiping = false;
+
+    //                // Tap detection (jump on tap)
+    //                if (touch.tapCount == 1 && !isJumping)
+    //                {
+    //                    TriggerJump();
+    //                }
+    //                break;
+    //        }
+    //    }
+    //}
+
+    void TriggerJump()
+    {
+        isJumping = true;
+        comingDown = false;
+        StartCoroutine(JumpSequence());
     }
 
     private void HandleJump()
     {
-        if (!comingDown)
+        if (isJumping)
         {
-            transform.Translate(Vector3.up * Time.deltaTime * jumpHeight, Space.World);
-        }
-        else
-        {
-            transform.Translate(Vector3.down * Time.deltaTime * jumpHeight, Space.World);
+            if (!comingDown)
+            {
+                transform.Translate(Vector3.up * Time.deltaTime * jumpHeight, Space.World);
+            }
+            else
+            {
+                transform.Translate(Vector3.down * Time.deltaTime * jumpHeight, Space.World);
+
+                // Check if the player has landed on the ground
+                if (transform.position.y <= groundY)
+                {
+                    transform.position = new Vector3(transform.position.x, groundY, transform.position.z);
+                    isJumping = false; // Reset jumping state
+                    comingDown = false;
+                }
+            }
         }
     }
 
     private IEnumerator JumpSequence()
     {
-        yield return new WaitForSeconds(0.45f);
-        comingDown = true;
-
+        yield return new WaitForSeconds(0.45f); // Time for going up
+        comingDown = true; // Start coming down
     }
-
 }
-
-

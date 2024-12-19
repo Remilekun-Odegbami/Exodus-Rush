@@ -16,6 +16,10 @@ public class Loading : MonoBehaviour
         second = 5;
          Invoke("LoadGame", 5f);
         StartCoroutine(LoadingSound());
+
+        // Call ToggleAudio here if needed (e.g., based on saved preferences)
+        bool isMuted = PlayerPrefs.GetInt("MuteAudio", 0) == 1; // Retrieve saved mute state
+       // ToggleAudio(isMuted); // Apply the mute/unmute setting
     }
 
     // Update is called once per frame
@@ -38,4 +42,12 @@ public class Loading : MonoBehaviour
         yield return new WaitForSeconds(.8f);
         loadFX.Play();
     }
+    
+    // Inside any script needing to mute/unmute
+    //void ToggleAudio(bool mute)
+    //{
+    //    AudioManager.Instance.UpdateBGMMute(mute); // Mute/Unmute Background Music
+    //    AudioManager.Instance.UpdateSFXMute(mute); // Mute/Unmute Sound Effects
+    //}
+
 }

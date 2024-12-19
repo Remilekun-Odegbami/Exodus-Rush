@@ -69,61 +69,55 @@ public class Player : MonoBehaviour
 
     void HandleMobileMovement()
     {
-        //check if player is touching the screen, how many touches they have and if the first touch on the screen is the first frame it is down
-        if(Input.touches[0].phase == TouchPhase.Began)
+        if (Input.touchCount > 0) // Ensure there is at least one touch
         {
-            //set start position to where the player puts their finger down
-            tap = true;
-            isSwiping = true;
-            startTouchPosition = Input.touches[0].position;
-        }
-        else if (Input.touches[0].phase == TouchPhase.Ended || Input.touches[0].phase == TouchPhase.Canceled)
-        {
-            isSwiping = false;
-            Reset();
-        }
+            touch = Input.GetTouch(0);
 
-        // calculate the distance
-        swipeDelta = Vector2.zero;
-        if (isSwiping)
-        {
-            if(Input.touches.Length < 1)
+            if (touch.phase == TouchPhase.Began)
             {
-                swipeDelta = Input.touches[0].position - startTouch;
-
-            } else if (Input.GetMouseButton(0))
-            {
-                swipeDelta = (Vector2)Input.mousePosition - startTouch;
+                tap = true;
+                isSwiping = true;
+                startTouchPosition = touch.position;
             }
-        }
-        if(swipeDelta.magnitude > 125)
-        {
-            float x = swipeDelta.x;
-            float y = swipeDelta.y;
-            if(Mathf.Abs(x) > Mathf.Abs(y))
+            else if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
             {
-                //left or right
-                if(x < 0)
-                {
-                    swipeLeft = true;
-                } else
-                {
-                    swipeRight = true;
-                }
-            } else
+                isSwiping = false;
+                Reset();
+            }
+
+            // Calculate the swipe distance
+            swipeDelta = Vector2.zero;
+            if (isSwiping)
             {
-                // Up or Down
-                if(y < 0)
+                swipeDelta = touch.position - startTouchPosition;
+
+                if (swipeDelta.magnitude > 125)
                 {
-                    swipeDown = true;
-                } else
-                {
-                    swipeUp = true;
+                    float x = swipeDelta.x;
+                    float y = swipeDelta.y;
+
+                    if (Mathf.Abs(x) > Mathf.Abs(y))
+                    {
+                        // Left or Right
+                        if (x < 0)
+                            swipeLeft = true;
+                        else
+                            swipeRight = true;
+                    }
+                    else
+                    {
+                        // Up or Down
+                        if (y < 0)
+                            swipeDown = true;
+                        else
+                            swipeUp = true;
+                    }
+                    Reset();
                 }
             }
-            Reset();
         }
     }
+
 
     private void Reset()
     {

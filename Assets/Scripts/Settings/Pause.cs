@@ -9,6 +9,8 @@ public class Pause : MonoBehaviour
     public GameObject aboutPanel;
     public GameObject pauseButton;
     public GameObject areYouSurePanel;
+    public GameObject gameControlPanel;
+    public GameObject howToPlayPanel;
     public EndRunSequence endRunSequence;
     [SerializeField] AudioSource MenuPopFX;
     public void PauseGame()
@@ -53,12 +55,27 @@ public class Pause : MonoBehaviour
         MenuPopFX.Play();
     }
 
-    public void CloseAboutPage() { 
-    
-        aboutPanel.SetActive(false);
+    public void OpenGameControlPage()
+    {
+        gameControlPanel.SetActive(true);
+        pausePanel.SetActive(false);
+        MenuPopFX.Play();
+    }
+    public void CloseGameControlPage()
+    {
+
+        gameControlPanel.SetActive(false);
         pausePanel.SetActive(true);
 
     }
+    public void CloseHowToPlay()
+    {
+
+        howToPlayPanel.SetActive(false);
+        pausePanel.SetActive(true);
+
+    }
+
 
     IEnumerator GoToMenuPage()
     {

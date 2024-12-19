@@ -15,12 +15,6 @@ public class MainMenuFunction : MonoBehaviour
 
     public Loading loading;
 
-    void Update()
-    {
-       
-
-    }
-
     public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -81,11 +75,6 @@ public class MainMenuFunction : MonoBehaviour
         mainMenu.SetActive(true);
         settingsMenu.SetActive(false);
         mainMenu.SetActive(true);
-    }
-
-    public void AllFunctions()
-    {
-
     }
 
 

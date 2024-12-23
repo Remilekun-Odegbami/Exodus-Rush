@@ -24,7 +24,6 @@ public class Player : MonoBehaviour
     public static GameObject thePlayer; 
     private Vector2 startTouchPosition, currentTouchPosition;
     private bool isSwiping = false;
-    private Vector2 swipeDelta;
     private Touch touch;
     private Vector3 targetPosition;
 
@@ -42,21 +41,6 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        // Check for the input system being used and call the appropriate function
-        //  HandleNewInputSystem();
-        //  HandleOldInputSystem();
-
-
-      //  transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * horizontalSpeed);
-
-        // Move the player forward
-    //    transform.Translate(Vector3.forward * Time.deltaTime * playerSpeed, Space.World);
-
-
-        // Smoothly move the player towards the target position
-      //  transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * horizontalSpeed);
-
-
         // Move the player forward only on the Z-axis
         Vector3 forwardMovement = Vector3.forward * Time.deltaTime * playerSpeed;
         transform.position += forwardMovement;
@@ -72,15 +56,10 @@ public class Player : MonoBehaviour
             );
         }
 
-
-
-
         if (canMove)
         {
             HandleMobileMovement();
             HandleMovement();
-            //HandleNewInputSystem();
-            //HandleOldInputSystem();
         }
 
         HandleJump(); // Always check jump status
@@ -106,128 +85,6 @@ public class Player : MonoBehaviour
         if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space)) && !isJumping)
         {
             TriggerJump();
-        }
-    }
-
-
-    // Handling input with the new Input System
-    void HandleNewInputSystem()
-    {
-        if (Touchscreen.current.primaryTouch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Began)
-        {
-            tap = true;
-            isSwiping = true;
-            startTouchPosition = Touchscreen.current.primaryTouch.position.ReadValue();
-        }
-
-        if (Touchscreen.current.primaryTouch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Ended ||
-            Touchscreen.current.primaryTouch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Canceled)
-        {
-            isSwiping = false;
-            Reset();
-        }
-
-        // Calculate swipe distance
-        swipeDelta = Vector2.zero;
-        if (isSwiping)
-        {
-            swipeDelta = Touchscreen.current.primaryTouch.position.ReadValue() - startTouchPosition;
-
-            if (swipeDelta.magnitude > 125)
-            {
-                float x = swipeDelta.x;
-                float y = swipeDelta.y;
-
-                if (Mathf.Abs(x) > Mathf.Abs(y))
-                {
-                    // Left or Right swipe
-                    if (x < 0)
-
-                    {
-
-                        swipeLeft = true;
-                        DebugManager.Instance.Log("Swiped Right new Input");
-                    }
-                    else
-
-                    {
-
-                        swipeRight = true;
-                        DebugManager.Instance.Log("Swiped Right new Input");
-                    }
-                }
-                else
-                {
-                    // Up or Down swipe
-                    if (y < 0)
-                        swipeDown = true;
-                    else
-                        swipeUp = true;
-                }
-                Reset();
-            }
-        }
-    }
-
-    // Handling input with the old Input System
-    void HandleOldInputSystem()
-    {
-        if (Input.touchCount > 0) // Ensure there is at least one touch
-        {
-            Touch touch = Input.GetTouch(0);
-
-            if (touch.phase == UnityEngine.TouchPhase.Began) // Explicitly use UnityEngine.TouchPhase
-            {
-                tap = true;
-                isSwiping = true;
-                startTouchPosition = touch.position;
-            }
-            else if (touch.phase == UnityEngine.TouchPhase.Ended || touch.phase == UnityEngine.TouchPhase.Canceled)
-            {
-                isSwiping = false;
-                Reset();
-            }
-
-            // Calculate the swipe distance
-            swipeDelta = Vector2.zero;
-            if (isSwiping)
-            {
-                swipeDelta = touch.position - startTouchPosition;
-
-                if (swipeDelta.magnitude > 125)
-                {
-                    float x = swipeDelta.x;
-                    float y = swipeDelta.y;
-
-                    if (Mathf.Abs(x) > Mathf.Abs(y))
-                    {
-                        // Left or Right swipe
-                        if (x < 0)
-                        {
-
-                            swipeLeft = true;
-                            DebugManager.Instance.Log("Swiped Left Old Input");
-                        }
-
-                        else
-
-                        {
-
-                            swipeRight = true;
-                            DebugManager.Instance.Log("Swiped Right Old Input");
-                        }
-                    }
-                    else
-                    {
-                        // Up or Down swipe
-                        if (y < 0)
-                            swipeDown = true;
-                        else
-                            swipeUp = true;
-                    }
-                    Reset();
-                }
-            }
         }
     }
 
@@ -262,44 +119,40 @@ public class Player : MonoBehaviour
                         {
                             if (swipeDelta.x > 0 && transform.position.x < right_limit)
                             {
-                                // Swipe Right
-                                //  transform.Translate(Vector3.right * Time.deltaTime * horizontalSpeed);
+                                isJumping = false;
                                 // Swipe Right
                                 transform.position += Vector3.right * .7f;
-                                // Swipe Right
-                             //  targetPosition += Vector3.right * horizontalSpeed; // Adjust the step size
-                                  // isSwiping = false; // Reset swipe detection
+                              //  isSwiping = false; // Reset swipe detection
                                 DebugManager.Instance.Log("Swiped Right Mobile");
+                                isJumping = false;
 
                             }
                             else if (swipeDelta.x < 0 && transform.position.x > left_limit)
                             {
+                                isJumping = false;
                                 // Swipe Left
-                                //  transform.Translate(Vector3.left * Time.deltaTime * horizontalSpeed);
-                                // Swipe Right
                                 transform.position += Vector3.left * .7f;
-                                // Swipe Left
-                            //    targetPosition += Vector3.left * horizontalSpeed; // Adjust the step size
-                                //    isSwiping = false; // Reset swipe detection
+                              //  isSwiping = false; // Reset swipe detection
                                 DebugManager.Instance.Log("Swiped Left Mobile");
-
+                                isJumping = false;
                             }
                         }
                     }
                     break;
 
-                case UnityEngine.TouchPhase.Ended:
-                    isSwiping = false;
-
-                    // Tap detection (jump on tap)
-                    if (touch.tapCount == 1 && !isJumping)                 
-                    {
-                        TriggerJump();
-                    }
-                    break;
+                //case UnityEngine.TouchPhase.Ended:
+                //    // Tap detection (jump on tap)
+                //   // if (touch.tapCount == 1 && !isJumping)
+                //    if(!isJumping)
+                //    {
+                //        TriggerJump();
+                //    }
+                //    break;
             }
-            // Clamp the target position to limits
-            targetPosition.x = Mathf.Clamp(targetPosition.x, left_limit, right_limit);
+            //if (!isJumping)
+            //       {
+            //          TriggerJump();
+            //       }
         }
     }
 
@@ -339,61 +192,4 @@ public class Player : MonoBehaviour
         comingDown = true; // Start coming down
     }
 
-
-
-    void HandleMobileMovement1()
-    {
-        if (Input.touchCount > 0)
-        {
-            touch = Input.GetTouch(0);
-
-            switch (touch.phase)
-            {
-                case UnityEngine.TouchPhase.Began:
-                    startTouchPosition = touch.position;
-                    isSwiping = true;
-                    break;
-
-                case UnityEngine.TouchPhase.Moved:
-                    if (isSwiping)
-                    {
-                        currentTouchPosition = touch.position;
-                        Vector2 swipeDelta = currentTouchPosition - startTouchPosition;
-
-                        // Horizontal swipe detection
-                        if (Mathf.Abs(swipeDelta.x) > Mathf.Abs(swipeDelta.y))
-                        {
-                            if (swipeDelta.x > 0 && targetPosition.x < right_limit)
-                            {
-                                // Swipe Right
-                                targetPosition += Vector3.right * 1f; // Move right by one unit
-                            }
-                            else if (swipeDelta.x < 0 && targetPosition.x > left_limit)
-                            {
-                                // Swipe Left
-                                targetPosition += Vector3.left * 1f; // Move left by one unit
-                            }
-                        }
-
-                        isSwiping = false; // Stop detecting after swipe
-                    }
-                    break;
-
-                case UnityEngine.TouchPhase.Ended:
-                    isSwiping = false;
-
-                    // Detect tap (jump)
-                    if (!isJumping)
-                    {
-                        TriggerJump();
-                    }
-                    break;
-            }
-
-            // Clamp the target position to limits
-           targetPosition.x = Mathf.Clamp(targetPosition.x, left_limit, right_limit);
-        }
-    }
 }
-
-// 1 has .delta time, 2 doesn't

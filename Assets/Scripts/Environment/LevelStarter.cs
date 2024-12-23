@@ -8,6 +8,7 @@ public class LevelStarter : MonoBehaviour
     public GameObject countDown2;
     public GameObject countDown1;
     public GameObject countDownRun;
+    public GameObject enemyInstruction;
     public Pause pause;
     public GameObject fadeIn;
     [SerializeField] int counterNum;
@@ -32,7 +33,8 @@ public class LevelStarter : MonoBehaviour
         levelControl.GetComponent<DistanceCovered>().enabled = false;
         Player.canMove = false;
         pause.pauseButton.SetActive(false);
-      //  DistanceCovered.addingDistance = false;
+        //  DistanceCovered.addingDistance = false;
+        enemyInstruction.SetActive(true);
         yield return new WaitForSeconds(.5f);
         timerFX.Play();
         // wait for the one screen to disappear
@@ -45,6 +47,7 @@ public class LevelStarter : MonoBehaviour
         countDown1.SetActive(true);
         yield return new WaitForSeconds(1f);
         countDownRun.SetActive(true);
+        enemyInstruction.SetActive(false);
         runFX.Play();
         Player.canMove = true;
         Player.thePlayer.GetComponent<Player>().enabled = true;

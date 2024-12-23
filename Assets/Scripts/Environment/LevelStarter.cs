@@ -9,7 +9,7 @@ public class LevelStarter : MonoBehaviour
     public GameObject countDown1;
     public GameObject countDownRun;
     public GameObject enemyInstruction;
-    public Pause pause;
+    public OnClickEvent onClickEvent;
     public GameObject fadeIn;
     [SerializeField] int counterNum;
     [SerializeField] AudioSource countDownFX;
@@ -28,11 +28,11 @@ public class LevelStarter : MonoBehaviour
     {
         // stop moving the player before the timer counts
         Player.thePlayer.GetComponent<Player>().enabled = false;
-        playerAnimation.GetComponent<Animator>().Play("Dwarf Idle");
+        playerAnimation.GetComponent<Animator>().Play("Idle");
         // stop counting the distance before the timer counts
         levelControl.GetComponent<DistanceCovered>().enabled = false;
         Player.canMove = false;
-        pause.pauseButton.SetActive(false);
+        onClickEvent.pauseButton.SetActive(false);
         //  DistanceCovered.addingDistance = false;
         enemyInstruction.SetActive(true);
         yield return new WaitForSeconds(.5f);
@@ -53,7 +53,7 @@ public class LevelStarter : MonoBehaviour
         Player.thePlayer.GetComponent<Player>().enabled = true;
         levelControl.GetComponent<DistanceCovered>().enabled = true;
         playerAnimation.GetComponent<Animator>().Play("Running");
-        pause.pauseButton.SetActive(true);
+        onClickEvent.pauseButton.SetActive(true);
         //  Debug.Log(DistanceCovered.addingDistance);
         //  DistanceCovered.addingDistance = true;
     }

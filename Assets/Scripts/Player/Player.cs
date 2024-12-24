@@ -121,7 +121,7 @@ public class Player : MonoBehaviour
                             {
                                 isJumping = false;
                                 // Swipe Right
-                                transform.position += Vector3.right * .7f;
+                                transform.position += Vector3.right * .15f;
                               //  isSwiping = false; // Reset swipe detection
                                 DebugManager.Instance.Log("Swiped Right Mobile");
                                 isJumping = false;
@@ -131,14 +131,28 @@ public class Player : MonoBehaviour
                             {
                                 isJumping = false;
                                 // Swipe Left
-                                transform.position += Vector3.left * .7f;
+                                transform.position += Vector3.left * .15f;
                               //  isSwiping = false; // Reset swipe detection
                                 DebugManager.Instance.Log("Swiped Left Mobile");
                                 isJumping = false;
                             }
+
                         }
+                       // isSwiping = false;
                     }
                     break;
+
+                //     case UnityEngine.TouchPhase.Ended:
+                //isSwiping = false;
+
+                //// Vertical swipe detection for jump
+                //Vector2 swipeDeltaEnd = touch.position - startTouchPosition;
+                //if (!isJumping && Mathf.Abs(swipeDeltaEnd.y) > 50 && Mathf.Abs(swipeDeltaEnd.x) < 30) // Adjust thresholds
+                //{
+                //    TriggerJump();
+                //        DebugManager.Instance.Log("Swiped Up to Jump");
+                //}
+                //break;
 
                 //case UnityEngine.TouchPhase.Ended:
                 //    // Tap detection (jump on tap)

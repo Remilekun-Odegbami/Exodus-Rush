@@ -7,9 +7,9 @@ public class CollectableCounter : MonoBehaviour
     public static int coinCount = 0;
     public static int gemCount = 0;
     public static int enemyCount = 0;
-    [SerializeField] GameObject enemyDisplay;
-    [SerializeField] GameObject coinDisplay;
-    [SerializeField] GameObject gemDisplay;
+    [SerializeField] public GameObject enemyDisplay;
+    [SerializeField] public GameObject coinDisplay;
+    [SerializeField] public GameObject gemDisplay;
     [SerializeField] GameObject coinEndDisplay;
     [SerializeField] GameObject enemyEndDisplay;
 

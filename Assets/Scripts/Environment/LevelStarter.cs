@@ -9,6 +9,9 @@ public class LevelStarter : MonoBehaviour
     public GameObject countDown1;
     public GameObject countDownRun;
     public GameObject enemyInstruction;
+    public GameObject coinPanel;
+    public GameObject DistancePanel;
+    public GameObject enemyPanel;
     public OnClickEvent onClickEvent;
     public GameObject fadeIn;
     [SerializeField] int counterNum;
@@ -28,13 +31,16 @@ public class LevelStarter : MonoBehaviour
     {
         // stop moving the player before the timer counts
         Player.thePlayer.GetComponent<Player>().enabled = false;
-        playerAnimation.GetComponent<Animator>().Play("Idle");
+        playerAnimation.GetComponent<Animator>().Play("Dwarf Idle");
         // stop counting the distance before the timer counts
         levelControl.GetComponent<DistanceCovered>().enabled = false;
         Player.canMove = false;
         onClickEvent.pauseButton.SetActive(false);
         //  DistanceCovered.addingDistance = false;
         enemyInstruction.SetActive(true);
+        DistancePanel.SetActive(false);
+        enemyPanel.SetActive(false);
+        coinPanel.SetActive(false);
         yield return new WaitForSeconds(.5f);
         timerFX.Play();
         // wait for the one screen to disappear
@@ -54,6 +60,9 @@ public class LevelStarter : MonoBehaviour
         levelControl.GetComponent<DistanceCovered>().enabled = true;
         playerAnimation.GetComponent<Animator>().Play("Running");
         onClickEvent.pauseButton.SetActive(true);
+        DistancePanel.SetActive(true);
+        enemyPanel.SetActive(true);
+        coinPanel.SetActive(true);
         //  Debug.Log(DistanceCovered.addingDistance);
         //  DistanceCovered.addingDistance = true;
     }
